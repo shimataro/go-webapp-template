@@ -1,13 +1,19 @@
 # https://help.github.com/en/articles/workflow-syntax-for-github-actions
 
-name: Linux
+name: Verify
 on: push
 jobs:
   verify:
     name: Verify
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.os }}
     strategy:
       matrix:
+        os:
+        - ubuntu-16.04
+        - ubuntu-18.04
+        - ubuntu-20.04
+        - macos-10.15
+        - windows-2019
         go:
         - 1.12
         - 1.13
