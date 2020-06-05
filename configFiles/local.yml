@@ -1,0 +1,7 @@
+settings:
+  address: ":8080"
+  timeout: 5
+
+users:
+- id: 1
+  name: "John Doe"
