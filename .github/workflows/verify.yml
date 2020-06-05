@@ -1,0 +1,36 @@
+# https://help.github.com/en/articles/workflow-syntax-for-github-actions
+
+name: Verify
+on: push
+jobs:
+  verify:
+    name: Verify
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os:
+        - ubuntu-16.04
+        - ubuntu-18.04
+        - ubuntu-20.04
+        - macos-10.15
+        - windows-2019
+        go:
+        - 1.12
+        - 1.13
+        - 1.14
+      fail-fast: false
+    steps:
+    - name: Checkout source codes
+      uses: actions/checkout@v2
+    - name: Install Go
+      uses: actions/setup-go@v2
+      with:
+        go-version: ${{ matrix.go }}
+    - name: Output versions
+      run: go version
+    - name: Build
+      run: go build
+    - name: Test
+      run: go test ./...
+    - name: Static code analysis
+      run: go vet

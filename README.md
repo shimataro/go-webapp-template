@@ -1,5 +1,7 @@
 # go-webapp-template
 
+![Verify](https://github.com/shimataro/go-webapp-template/workflows/Verify/badge.svg)
+
 Goを使ったウェブアプリケーションのテンプレート
 
 ## 必要なソフトウェア
