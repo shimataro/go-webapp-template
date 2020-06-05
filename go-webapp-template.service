@@ -1,0 +1,16 @@
+# https://circus.readthedocs.io/en/latest/for-ops/deployment/
+[Unit]
+Description=Go Webapp template
+After=syslog.target network.target nss-lookup.target
+
+[Service]
+Type=simple
+ExecStart=/usr/local/bin/circusd /var/www/circus.ini
+ExecStop=/usr/local/bin/circusd stop
+ExecReload=/usr/local/bin/circusctl reload
+WorkingDirectory=/var/www
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=default.target
